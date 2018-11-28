@@ -31,8 +31,8 @@
 #### 工具
 
 为了避免 / 减少由于工具版本不同可能产生的问题，该项目强制要求使用下列版本。
-此外，类库版本以pom.xml文件为标准，这里没有列出
-注：{version} ~ 表示此版本后均可接受
+此外，类库版本以pom.xml文件为标准，这里没有列出。
+注：{version} ~ 表示此版本后均可接受。
 
 + JDK 8
 + Git 2.18 ~    GUI：sourceTree（Mac推荐）/ totoriseGit（win推荐）
@@ -45,6 +45,7 @@
 #### 类库等其他相关
 
 + Springboot （Spring，SpringMVC，MyBatis）
++ druid
 + Shiro
 + Websocket
 + html、css、js、vue、freemarker
@@ -54,6 +55,8 @@
 在第一次迭代中，初期建表完毕之后，采用自动生成的方式构建实体类，DAO接口，Mapper文件。之后对自动生成的文件进行修改，添加相关注释。在领域模型变化之后，不再进行自动生成，仅在原有的基础上进行修改。
 
 参考资料：[springboot集成mybatis及mybatis generator工具使用](https://blog.csdn.net/travellersy/article/details/78620247)
+
+
 
 ## 目录结构
 
@@ -84,19 +87,23 @@
    + js：js文件
    + image：图片
 + mapper：mybatis的映射文件
++ mybatis-generator：mybatis-generator的配置文件
 + templates：视图模板，存放Freemarker文件
    + fragment：可重用的页面，如：导航栏，页脚，信息弹框等
    + admin：管理员相关页面
    + user：登录等通用的用户页面
    + student：学生相关页面
    + teacher：老师相关页面
+   + test：测试用临时页面
 
 
 
 参考资料：[spring boot 项目开发常用目录结构](https://blog.csdn.net/Auntvt/article/details/80381756)
 
 
+
 ## 代码规范 
+
 #### 通用
 1. 强制要求使用P3C插件来规范代码，并通读阿里手册
 2. 类，方法，字段均需要写 javadoc 注释，其中类注释需要带上 author 信息
@@ -112,15 +119,20 @@
 
 
 #### DAO层
-1. 接口前的注解为@Mapper（否则，需要在Application类前加@MapperScan）和@Component（为了能够使用@AutoWried）。
+1. 接口前的注解为@Mapper（否则，需要在Application类前加@MapperScan）和@Component（为了能够使用@Autowired）。
 2. 使用xml的方式进行配置。
 3. 增删改分别使用insert、delete、update作为前缀；获取单个用get，多个用list作为前缀。带条件再加上ByXXX，如getById，listByName。获得统计值用count作为前缀。
-4. 以增删改查的顺序编写Mapper的XML文件以及DAO接口文件，方便 code review。
+4. 以增删改查的顺序编写Mapper的XML文件以及DAO接口文件，方便 code review。两个文件的方法顺序应保持一致性。
 5. 以查询结果为List或数组等形式为目标的，一律不允许返回NULL，用长度为0的List / 数组等代替NULL返回。单个查询可以返回NULL。
 
 #### Domain层
 1. 在Mybatis-Generator自动生成的基础上修正注释
 2. 实体类实现Serializable，serialVersionUID 均用 1L 作为值
+
+#### 单元测试
+1. 不能通过人工检查logger或者System.out的方式进行确认是否正确，必须保证自动化。
+2. 保证独立性，若被测试的类依赖了其他类，应该使用Mock来模拟依赖
+3. 被测试的类代码更新之后，及时更新其单元测试。
 
 #### 示例
 
@@ -148,3 +160,47 @@ public class GlobalExceptionHandler {
     }
 }
 ```
+
+
+
+## Git说明
+
+1. 各成员在develop分支上检出feature分支。新分支命名为：feature-xx。xx为成员代号名。一切功能开发在该分支上进行（不断地add、commit）。
+2. 开发完自己负责的部分后，切换回（checkout）develop分支，并 pull origin develop 检查有无更新。若无：合并，push。若有：解决冲突，rebase，合并，push。
+
+
+参考资料：
+[图文详解如何利用Git+Github进行团队协作开发](https://www.cnblogs.com/yhaing/p/8473746.html)
+[Git Commit Log的小型团队最佳实践](https://segmentfault.com/a/1190000015434246)
+
+
+
+## 未上传的文件
+
+1. src/main/resources/mybatis-generator/init.propeties未上传。示例如下：
+```propeties
+server.port=8080
+#server.servlet.context-path=/test
+
+
+# 数据源配置 - Druid采用默认配置
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/flipped_class?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
+spring.datasource.username=root
+spring.datasource.password=Ab123456
+# driver-class-name 非必填可根据url推断
+# spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+```
+2. src/main/resources/config/application-*（dev、pro、test）未上传。示例如下：
+```propeties
+server.port=8080
+#server.servlet.context-path=/test
+
+
+# 数据源配置 - Druid采用默认配置
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/flipped_class_test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
+spring.datasource.username=root
+spring.datasource.password=Ab123456
+# driver-class-name 非必填可根据url推断
+# spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+```
+
