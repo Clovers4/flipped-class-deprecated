@@ -11,7 +11,7 @@
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="role" jdbcType="TINYINT" property="role" />
     <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="activative" jdbcType="TINYINT" property="activative" />
+    <result column="activative" jdbcType="BIT" property="activative" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
@@ -32,7 +32,7 @@
     insert into user (account, `password`, `role`, 
       email, activative)
     values (#{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{role,jdbcType=TINYINT}, 
-      #{email,jdbcType=VARCHAR}, #{activative,jdbcType=TINYINT})
+      #{email,jdbcType=VARCHAR}, #{activative,jdbcType=BIT})
   </insert>
   <update id="updateByPrimaryKey" parameterType="online.templab.flippedclass.domain.User">
     <!--
@@ -44,7 +44,7 @@
       `password` = #{password,jdbcType=VARCHAR},
       `role` = #{role,jdbcType=TINYINT},
       email = #{email,jdbcType=VARCHAR},
-      activative = #{activative,jdbcType=TINYINT}
+      activative = #{activative,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
