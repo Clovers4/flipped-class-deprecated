@@ -47,6 +47,9 @@ mvnw.cmd
 init.properties
 application-*.properties
 
+# reference #
+/reference/
+
 # some local files
 */.settings/
 */.DS_Store

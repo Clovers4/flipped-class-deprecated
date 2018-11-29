@@ -166,7 +166,12 @@ public class GlobalExceptionHandler {
 ## Git说明
 
 1. 各成员在develop分支上检出feature分支。新分支命名为：feature-xx。xx为成员代号名。一切功能开发在该分支上进行（不断地add、commit）。
+
 2. 开发完自己负责的部分后，切换回（checkout）develop分支，并 pull origin develop 检查有无更新。若无：合并，push。若有：解决冲突，rebase，合并，push。
+
+3. commit log形式如下：写中括号，中括号中加上具体type，空一格， 编写subject。即[type] subject
+
+   如：[fix] 修改sql文件。符合数据库设计变化。
 
 
 参考资料：
