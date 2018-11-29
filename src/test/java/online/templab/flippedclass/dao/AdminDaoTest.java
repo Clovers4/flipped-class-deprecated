@@ -3,12 +3,12 @@ package online.templab.flippedclass.dao;
 
 import online.templab.flippedclass.FlippedClassApplicationTest;
 import online.templab.flippedclass.domain.Admin;
-import online.templab.flippedclass.service.impl.AdminServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -22,12 +22,9 @@ public class AdminDaoTest extends FlippedClassApplicationTest {
     @Autowired
     AdminDao adminDao;
 
-    Random random = new Random();
-
     private Admin getRandomAdmin() {
-        AdminServiceImpl adminService;
         Admin admin = new Admin();
-        admin.setAccount("superman" + random.nextInt(10000));
+        admin.setAccount("admin_test_" + random.nextInt(10000));
         admin.setPassword("abc123");
         return admin;
     }
@@ -45,7 +42,7 @@ public class AdminDaoTest extends FlippedClassApplicationTest {
     }
 
     @Test
-    public void deleteByPrimaryKey() {
+    public void deleteById() {
         Admin admin = getRandomAdmin();
         adminDao.insert(admin);
         logger.info(admin.toString());
@@ -54,16 +51,43 @@ public class AdminDaoTest extends FlippedClassApplicationTest {
     }
 
     @Test
-    public void updateByPrimaryKey() {
+    public void updateById() {
         Admin admin = getRandomAdmin();
         adminDao.insert(admin);
 
         admin.setPassword("new123");
         logger.info(admin.toString());
-
         Assert.assertEquals(1, adminDao.updateById(admin));
 
         Admin recordFormDB = adminDao.getByAccount(admin.getAccount());
+        logger.info(recordFormDB.toString());
         Assert.assertEquals(admin.getPassword(), recordFormDB.getPassword());
+    }
+
+    @Test
+    public void getById() {
+        Admin admin = getRandomAdmin();
+        adminDao.insert(admin);
+
+        Admin recordFormDB = adminDao.getById(admin.getId());
+        logger.info(recordFormDB.toString());
+        Assert.assertTrue(recordFormDB != null);
+    }
+
+    @Test
+    public void getByAccount() {
+        Admin admin = getRandomAdmin();
+        adminDao.insert(admin);
+
+        Admin recordFormDB = adminDao.getByAccount(admin.getAccount());
+        logger.info(recordFormDB.toString());
+        Assert.assertTrue(recordFormDB != null);
+    }
+
+    @Test
+    public void listAll() {
+        List<Admin> admins = adminDao.listAll();
+        logger.info(admins.toString());
+        Assert.assertTrue(admins != null);
     }
 }
