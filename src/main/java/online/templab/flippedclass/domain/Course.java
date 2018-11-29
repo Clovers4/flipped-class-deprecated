@@ -47,7 +47,7 @@ public class Course implements Serializable {
      *
      * @mbg.generated
      */
-    private Byte shareTeamMasterCourseId;
+    private Integer shareTeamMasterCourseId;
 
     /**
      *
@@ -56,7 +56,7 @@ public class Course implements Serializable {
      *
      * @mbg.generated
      */
-    private Byte shareSeminarMasterCourseId;
+    private Integer shareSeminarMasterCourseId;
 
     /**
      *
@@ -197,7 +197,7 @@ public class Course implements Serializable {
      *
      * @mbg.generated
      */
-    public Byte getShareTeamMasterCourseId() {
+    public Integer getShareTeamMasterCourseId() {
         return shareTeamMasterCourseId;
     }
 
@@ -209,7 +209,7 @@ public class Course implements Serializable {
      *
      * @mbg.generated
      */
-    public void setShareTeamMasterCourseId(Byte shareTeamMasterCourseId) {
+    public void setShareTeamMasterCourseId(Integer shareTeamMasterCourseId) {
         this.shareTeamMasterCourseId = shareTeamMasterCourseId;
     }
 
@@ -221,7 +221,7 @@ public class Course implements Serializable {
      *
      * @mbg.generated
      */
-    public Byte getShareSeminarMasterCourseId() {
+    public Integer getShareSeminarMasterCourseId() {
         return shareSeminarMasterCourseId;
     }
 
@@ -233,7 +233,7 @@ public class Course implements Serializable {
      *
      * @mbg.generated
      */
-    public void setShareSeminarMasterCourseId(Byte shareSeminarMasterCourseId) {
+    public void setShareSeminarMasterCourseId(Integer shareSeminarMasterCourseId) {
         this.shareSeminarMasterCourseId = shareSeminarMasterCourseId;
     }
 
