@@ -10,8 +10,8 @@
     <result column="teacher_id" jdbcType="INTEGER" property="teacherId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="intro" jdbcType="VARCHAR" property="intro" />
-    <result column="share_team_master_course_id" jdbcType="TINYINT" property="shareTeamMasterCourseId" />
-    <result column="share_seminar_master_course_id" jdbcType="TINYINT" property="shareSeminarMasterCourseId" />
+    <result column="share_team_master_course_id" jdbcType="INTEGER" property="shareTeamMasterCourseId" />
+    <result column="share_seminar_master_course_id" jdbcType="INTEGER" property="shareSeminarMasterCourseId" />
     <result column="presentation_weight" jdbcType="DECIMAL" property="presentationWeight" />
     <result column="report_weight" jdbcType="DECIMAL" property="reportWeight" />
     <result column="quetion_weight" jdbcType="DECIMAL" property="quetionWeight" />
@@ -37,7 +37,7 @@
       presentation_weight, report_weight, quetion_weight
       )
     values (#{teacherId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}, 
-      #{shareTeamMasterCourseId,jdbcType=TINYINT}, #{shareSeminarMasterCourseId,jdbcType=TINYINT}, 
+      #{shareTeamMasterCourseId,jdbcType=INTEGER}, #{shareSeminarMasterCourseId,jdbcType=INTEGER}, 
       #{presentationWeight,jdbcType=DECIMAL}, #{reportWeight,jdbcType=DECIMAL}, #{quetionWeight,jdbcType=DECIMAL}
       )
   </insert>
@@ -50,8 +50,8 @@
     set teacher_id = #{teacherId,jdbcType=INTEGER},
       `name` = #{name,jdbcType=VARCHAR},
       intro = #{intro,jdbcType=VARCHAR},
-      share_team_master_course_id = #{shareTeamMasterCourseId,jdbcType=TINYINT},
-      share_seminar_master_course_id = #{shareSeminarMasterCourseId,jdbcType=TINYINT},
+      share_team_master_course_id = #{shareTeamMasterCourseId,jdbcType=INTEGER},
+      share_seminar_master_course_id = #{shareSeminarMasterCourseId,jdbcType=INTEGER},
       presentation_weight = #{presentationWeight,jdbcType=DECIMAL},
       report_weight = #{reportWeight,jdbcType=DECIMAL},
       quetion_weight = #{quetionWeight,jdbcType=DECIMAL}
