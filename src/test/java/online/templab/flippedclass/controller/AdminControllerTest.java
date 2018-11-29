@@ -62,8 +62,8 @@ public class AdminControllerTest extends FlippedClassApplicationTest {
         }
         given(adminService.listAll()).willReturn(admins);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/admin/list-all"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/pc/admin/list-all"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("admin/list-all")).andDo(print());
+                .andExpect(view().name("pc/admin/list-all")).andDo(print());
     }
 }
