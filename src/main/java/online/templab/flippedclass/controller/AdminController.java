@@ -16,7 +16,7 @@ import java.util.List;
  * @author W.K
  */
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("pc/admin")
 public class AdminController {
 
     @Autowired
@@ -29,6 +29,6 @@ public class AdminController {
     public String listAll(Model model) {
         List<Admin> admins = adminService.listAll();
         model.addAttribute("admins", admins);
-        return "admin/list-all";
+        return "pc/admin/list-all";
     }
 }
