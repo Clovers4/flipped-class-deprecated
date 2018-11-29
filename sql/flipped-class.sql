@@ -11,7 +11,7 @@ CREATE TABLE `user` (
 `password` varchar(50) NOT NULL,
 `role` tinyint(5) NOT NULL,
 `email` varchar(50) NULL,
-`activative` tinyint(5) NOT NULL,
+`activative` tinyint(1) NOT NULL,
 PRIMARY KEY (`id`) ,
 UNIQUE INDEX `unique_account` (`account` ASC) USING BTREE COMMENT 'account唯一标识' 
 );
@@ -22,9 +22,9 @@ CREATE TABLE `course` (
 `need_team` tinyint(5) NOT NULL,
 `share_team` tinyint(5) NOT NULL,
 `share_seminar` tinyint(5) NOT NULL,
-`present_weight` decimal(10,2) NOT NULL,
-`quetion_weight` decimal(10,2) NOT NULL,
-`report_weight` decimal(10,2) NOT NULL,
+`present_weight` decimal(3,2) NOT NULL,
+`quetion_weight` decimal(3,2) NOT NULL,
+`report_weight` decimal(3,2) NOT NULL,
 `team_rule_id` int(10) UNSIGNED NOT NULL,
 PRIMARY KEY (`id`) 
 );
@@ -88,8 +88,8 @@ PRIMARY KEY (`id`)
 CREATE TABLE `presentation` (
 `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 `team_id` int(10) NOT NULL,
-`score` decimal(10,0) NULL,
-`report_score` decimal(10,0) NULL,
+`score` decimal(3,2) NULL,
+`report_score` decimal(3,2) NULL,
 `seating_order` tinyint(5) NULL,
 `seminard` tinyint(5) NULL,
 `time` datetime(6) NULL ON UPDATE CURRENT_TIMESTAMP(6),
@@ -114,7 +114,7 @@ PRIMARY KEY (`id`)
 );
 CREATE TABLE `question` (
 `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-`score` decimal(10,0) NULL,
+`score` decimal(3,2) NULL,
 `student_id` int(10) NOT NULL,
 `team_id` int(10) NOT NULL,
 `presentation_id` int(10) NOT NULL,
