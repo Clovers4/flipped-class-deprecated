@@ -39,7 +39,7 @@ public interface AdminDao {
     /**
      * 更新一条记录。使用主键id匹配唯一一条记录，进行更新。
      *
-     * @param record 一条被修改，但未被持久化的管理员实体类
+     * @param record 一条被修改，但未被持久化的实体类
      * @return 更新的行数，只可能为0或1.
      */
     int updateById(Admin record);
