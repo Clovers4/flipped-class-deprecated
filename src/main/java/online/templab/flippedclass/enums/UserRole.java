@@ -9,12 +9,26 @@ package online.templab.flippedclass.enums;
  */
 public enum UserRole {
 
-    TEACHER((byte) 1),
-    STUDENT((byte) 2);
+    TEACHER(1),
+    STUDENT(2);
 
-    public Byte code;
+    public Integer code;
 
-    UserRole(Byte code) {
+    UserRole(Integer code) {
         this.code = code;
+    }
+
+    public static String getName(Integer code) {
+        for (UserRole role : UserRole.values()) {
+            if (code.equals(role.code)) {
+                return role.toString().toLowerCase();
+            }
+        }
+        return "";
+    }
+
+    public static void main(String[] args) {
+        System.out.println(UserRole.getName(1));
+        System.out.println(UserRole.getName(2));
     }
 }

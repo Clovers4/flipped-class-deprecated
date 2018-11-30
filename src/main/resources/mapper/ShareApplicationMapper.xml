@@ -9,8 +9,8 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="master_course_id" jdbcType="INTEGER" property="masterCourseId" />
     <result column="slave_course_id" jdbcType="INTEGER" property="slaveCourseId" />
-    <result column="function" jdbcType="TINYINT" property="function" />
-    <result column="state" jdbcType="TINYINT" property="state" />
+    <result column="function" jdbcType="INTEGER" property="function" />
+    <result column="state" jdbcType="INTEGER" property="state" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

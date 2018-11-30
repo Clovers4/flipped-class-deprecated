@@ -9,7 +9,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="leader_id" jdbcType="INTEGER" property="leaderId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="valid" jdbcType="TINYINT" property="valid" />
+    <result column="valid" jdbcType="BIT" property="valid" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--

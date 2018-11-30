@@ -6,7 +6,7 @@ DROP TABLE `course_seminar`;
 DROP TABLE `team_rule`;
 DROP TABLE `share_application`;
 DROP TABLE `klass`;
-DROP TABLE `student_klass`;
+DROP TABLE `klass_student`;
 DROP TABLE `round`;
 DROP TABLE `round_seminar`;
 DROP TABLE `presentation`;

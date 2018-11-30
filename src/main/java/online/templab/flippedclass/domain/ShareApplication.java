@@ -33,12 +33,12 @@ public class ShareApplication implements Serializable {
     /**
      * 功能 share_application.function
      */
-    private Byte function;
+    private Integer function;
 
     /**
      * 状态 share_application.state
      */
-    private Byte state;
+    private Integer state;
 
     /**
      * 创建时间 share_application.create_time
@@ -69,19 +69,19 @@ public class ShareApplication implements Serializable {
         this.slaveCourseId = slaveCourseId;
     }
 
-    public Byte getFunction() {
+    public Integer getFunction() {
         return function;
     }
 
-    public void setFunction(Byte function) {
+    public void setFunction(Integer function) {
         this.function = function;
     }
 
-    public Byte getState() {
+    public Integer getState() {
         return state;
     }
 
-    public void setState(Byte state) {
+    public void setState(Integer state) {
         this.state = state;
     }
 

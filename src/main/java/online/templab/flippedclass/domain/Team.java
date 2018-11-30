@@ -32,7 +32,7 @@ public class Team implements Serializable {
     /**
      * 是否合法 team.valid
      */
-    private Byte valid;
+    private Boolean valid;
 
     public Integer getId() {
         return id;
@@ -58,11 +58,11 @@ public class Team implements Serializable {
         this.name = name == null ? null : name.trim();
     }
 
-    public Byte getValid() {
+    public Boolean getValid() {
         return valid;
     }
 
-    public void setValid(Byte valid) {
+    public void setValid(Boolean valid) {
         this.valid = valid;
     }
 

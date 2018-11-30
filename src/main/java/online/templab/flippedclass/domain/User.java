@@ -30,9 +30,14 @@ public class User implements Serializable {
     private String password;
 
     /**
+     * 姓名 user.name
+     */
+    private String name;
+
+    /**
      * 角色 user.role
      */
-    private Byte role;
+    private Integer role;
 
     /**
      * 邮箱 user.email
@@ -60,6 +65,14 @@ public class User implements Serializable {
         this.account = account == null ? null : account.trim();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
+
     public String getPassword() {
         return password;
     }
@@ -68,11 +81,11 @@ public class User implements Serializable {
         this.password = password == null ? null : password.trim();
     }
 
-    public Byte getRole() {
+    public Integer getRole() {
         return role;
     }
 
-    public void setRole(Byte role) {
+    public void setRole(Integer role) {
         this.role = role;
     }
 
@@ -101,6 +114,7 @@ public class User implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", account=").append(account);
         sb.append(", password=").append(password);
+        sb.append(", name=").append(name);
         sb.append(", role=").append(role);
         sb.append(", email=").append(email);
         sb.append(", activative=").append(activative);

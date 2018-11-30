@@ -9,10 +9,10 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="topic" jdbcType="VARCHAR" property="topic" />
     <result column="intro" jdbcType="VARCHAR" property="intro" />
-    <result column="state" jdbcType="TINYINT" property="state" />
+    <result column="state" jdbcType="INTEGER" property="state" />
     <result column="sign_up_start_time" jdbcType="TIMESTAMP" property="signUpStartTime" />
     <result column="sign_up_end_time" jdbcType="TIMESTAMP" property="signUpEndTime" />
-    <result column="presentation_order_mode" jdbcType="TINYINT" property="presentationOrderMode" />
+    <result column="presentation_order_mode" jdbcType="INTEGER" property="presentationOrderMode" />
     <result column="team_num_limit" jdbcType="INTEGER" property="teamNumLimit" />
     <result column="report_end_time" jdbcType="TIMESTAMP" property="reportEndTime" />
   </resultMap>
