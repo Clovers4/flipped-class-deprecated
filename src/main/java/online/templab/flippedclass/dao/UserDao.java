@@ -1,8 +1,10 @@
 package online.templab.flippedclass.dao;
 
 import java.util.List;
+
 import online.templab.flippedclass.domain.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Component;
 
 /**
@@ -20,9 +22,10 @@ public interface UserDao {
      * 若要获取id，直接调用record.getId();即可。
      *
      * @param record
-     * @return 插入的行数，成功则为 1。
+     * @return 插入的行数，成功则为 1。失败则抛出异常。
+     * @throws DuplicateKeyException
      */
-    int insert(User record);
+    int insert(User record) throws DuplicateKeyException;
 
     /**
      * 删除一条记录。通过主键id来删除匹配到的记录。

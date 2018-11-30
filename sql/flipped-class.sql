@@ -9,7 +9,8 @@ CREATE TABLE `user` (
 `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 `account` varchar(25) NOT NULL,
 `password` varchar(50) NOT NULL,
-`role` tinyint(5) NOT NULL,
+`name` varchar(10) NOT NULL,
+`role` int(5) NOT NULL,
 `email` varchar(50) NULL,
 `activative` tinyint(1) NOT NULL,
 PRIMARY KEY (`id`) ,
@@ -31,10 +32,10 @@ CREATE TABLE `seminar` (
 `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 `topic` varchar(255) NOT NULL,
 `intro` varchar(255) NULL,
-`state` tinyint(5) NOT NULL COMMENT '状态：不可见、已开放未进行、正在进行、已结束',
+`state` int(5) NOT NULL COMMENT '状态：不可见、已开放未进行、正在进行、已结束',
 `sign_up_start_time` datetime(6) NOT NULL,
 `sign_up_end_time` datetime(6) NOT NULL,
-`presentation_order_mode` tinyint(5) NOT NULL,
+`presentation_order_mode` int(5) NOT NULL,
 `team_num_limit` int(10) NOT NULL,
 `report_end_time` datetime(6) NOT NULL ON UPDATE CURRENT_TIMESTAMP(6),
 PRIMARY KEY (`id`) 
@@ -48,7 +49,7 @@ PRIMARY KEY (`id`)
 CREATE TABLE `team_rule` (
 `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 `course_id` int(10) NOT NULL,
-`strategy` tinyint(5) NOT NULL,
+`strategy` int(5) NOT NULL,
 `max_member_num` int(10) NOT NULL,
 `min_member_num` int(10) NOT NULL,
 `end_time` datetime(6) NOT NULL ON UPDATE CURRENT_TIMESTAMP(6),
@@ -58,8 +59,8 @@ CREATE TABLE `share_application` (
 `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 `master_course_id` int(10) NOT NULL,
 `slave_course_id` int(10) NOT NULL,
-`function` tinyint(3) NOT NULL COMMENT '表明是共享课程还是共享分组',
-`state` tinyint(3) NOT NULL COMMENT '表明是否已经处理该请求',
+`function` int(3) NOT NULL COMMENT '表明是共享课程还是共享分组',
+`state` int(3) NOT NULL COMMENT '表明是否已经处理该请求',
 `create_time` datetime(6) NOT NULL,
 PRIMARY KEY (`id`) 
 );
@@ -100,7 +101,7 @@ CREATE TABLE `team` (
 `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 `leader_id` int(10) NOT NULL,
 `name` varchar(50) NOT NULL,
-`valid` tinyint(5) NOT NULL,
+`valid` tinyint(1) NOT NULL,
 PRIMARY KEY (`id`) 
 );
 CREATE TABLE `team_student` (

@@ -7,7 +7,8 @@
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="account" jdbcType="VARCHAR" property="account"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
-        <result column="role" jdbcType="TINYINT" property="role"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="role" jdbcType="INTEGER" property="role"/>
         <result column="email" jdbcType="VARCHAR" property="email"/>
         <result column="activative" jdbcType="BIT" property="activative"/>
     </resultMap>
@@ -16,10 +17,12 @@
         <selectKey keyProperty="id" order="AFTER" resultType="integer">
             SELECT LAST_INSERT_ID()
         </selectKey>
-        insert into user (account, `password`, `role`,
-        email, activative)
-        values (#{account}, #{password}, #{role},
-        #{email}, #{activative})
+        insert into user (account, `password`, `name`,
+        `role`, email, activative
+        )
+        values (#{account}, #{password}, #{name},
+        #{role}, #{email}, #{activative}
+        )
     </insert>
 
     <delete id="deleteById" parameterType="integer">
@@ -35,6 +38,9 @@
             </if>
             <if test="password != null">
                 `password` = #{password},
+            </if>
+            <if test="name != null">
+                `name` = #{name},
             </if>
             <if test="role != null">
                 `role` = #{role},
@@ -54,6 +60,7 @@
             id,
             account,
             `password`,
+            `name`,
             `role`,
             email,
             activative
@@ -66,6 +73,7 @@
             id,
             account,
             `password`,
+            `name`,
             `role`,
             email,
             activative
@@ -78,6 +86,7 @@
             id,
             account,
             `password`,
+            `name`,
             `role`,
             email,
             activative

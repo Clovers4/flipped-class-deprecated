@@ -33,7 +33,7 @@ public class Seminar implements Serializable {
     /**
      * 讨论课状态 seminar.state
      */
-    private Byte state;
+    private Integer state;
 
     /**
      * 讨论课报名开始时间 seminar.sign_up_start_time
@@ -48,7 +48,7 @@ public class Seminar implements Serializable {
     /**
      * 讨论课展示顺序模式 seminar.presentation_order_mode
      */
-    private Byte presentationOrderMode;
+    private Integer presentationOrderMode;
 
     /**
      * 每个讨论课限制队伍数量 seminar.team_num_limit
@@ -84,11 +84,11 @@ public class Seminar implements Serializable {
         this.intro = intro == null ? null : intro.trim();
     }
 
-    public Byte getState() {
+    public Integer getState() {
         return state;
     }
 
-    public void setState(Byte state) {
+    public void setState(Integer state) {
         this.state = state;
     }
 
@@ -108,11 +108,11 @@ public class Seminar implements Serializable {
         this.signUpEndTime = signUpEndTime;
     }
 
-    public Byte getPresentationOrderMode() {
+    public Integer getPresentationOrderMode() {
         return presentationOrderMode;
     }
 
-    public void setPresentationOrderMode(Byte presentationOrderMode) {
+    public void setPresentationOrderMode(Integer presentationOrderMode) {
         this.presentationOrderMode = presentationOrderMode;
     }
 
