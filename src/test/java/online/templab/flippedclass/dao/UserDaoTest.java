@@ -6,6 +6,7 @@ import online.templab.flippedclass.enums.UserRole;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.test.annotation.Repeat;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,18 +19,27 @@ import java.util.Random;
  *
  * @author W.K
  */
-@Transactional
+//@Transactional
 public class UserDaoTest extends FlippedClassApplicationTest {
 
     @Autowired
     UserDao userDao;
 
-    private Random random = new Random();
-
     private User getRandomUser() {
         User user = new User();
-        user.setAccount("user_test_" + random.nextInt(10000));
+        user.setAccount("user_test_dao_" + random.nextInt(10000));
         user.setPassword("abc123");
+        user.setName("name_" + random.nextInt(100));
+        user.setRole(UserRole.STUDENT.code);
+        user.setActivative(false);
+        return user;
+    }
+
+    private User getStaticUser() {
+        User user = new User();
+        user.setAccount("user_test_dao_static");
+        user.setPassword("abc123");
+        user.setName("name_s");
         user.setRole(UserRole.STUDENT.code);
         user.setActivative(false);
         return user;
@@ -46,6 +56,12 @@ public class UserDaoTest extends FlippedClassApplicationTest {
         User user = getRandomUser();
         logger.info(user.toString());
         Assert.assertEquals(1, userDao.insert(user));
+    }
+
+    @Test(expected = DuplicateKeyException.class)
+    public void insertSame() {
+        userDao.insert(getStaticUser());
+        userDao.insert(getStaticUser());
     }
 
     @Test
@@ -88,6 +104,12 @@ public class UserDaoTest extends FlippedClassApplicationTest {
     }
 
     @Test
+    public void getByIdNotExist() {
+        User recordFormDB = userDao.getById(1231247);
+        Assert.assertTrue(recordFormDB == null);
+    }
+
+    @Test
     public void getByAccount() {
         User user = getRandomUser();
         userDao.insert(user);
@@ -97,6 +119,11 @@ public class UserDaoTest extends FlippedClassApplicationTest {
         Assert.assertTrue(recordFormDB != null);
     }
 
+    @Test
+    public void getByAccountNotExist() {
+        User recordFormDB = userDao.getByAccount("asdd1331233");
+        Assert.assertTrue(recordFormDB == null);
+    }
 
     @Test
     public void listAll() {
