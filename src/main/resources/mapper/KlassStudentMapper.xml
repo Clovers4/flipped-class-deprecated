@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="online.templab.flippedclass.dao.KlassStudentMapper">
+<mapper namespace="online.templab.flippedclass.dao.KlassStudentDao">
   <resultMap id="BaseResultMap" type="online.templab.flippedclass.domain.KlassStudent">
     <!--
       WARNING - @mbg.generated
@@ -62,4 +62,11 @@
     select id, klass_id, student_id
     from klass_student
   </select>
+
+  <select id="listByKlassId" parameterType="Integer" resultMap="BaseResultMap">
+      select id ,student_id
+    from klass_student
+    where klass_id = #{klass_id}
+  </select>
+
 </mapper>

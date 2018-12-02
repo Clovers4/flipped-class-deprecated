@@ -46,4 +46,9 @@ public interface TeamStudentDao {
      * 通过学生id 删除该队伍中的一个学生
      */
     int deleteByStudentId(TeamStudent teamStudent);
+
+    /**
+     * 获取队伍中所有学生id
+     */
+    List<Integer> listByTeamId(Integer teamId);
 }

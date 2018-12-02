@@ -1,17 +1,12 @@
 package online.templab.flippedclass.service.impl;
 
-import online.templab.flippedclass.dao.KlassTeamDao;
-import online.templab.flippedclass.dao.TeamDao;
-import online.templab.flippedclass.dao.TeamRuleDao;
-import online.templab.flippedclass.dao.TeamStudentDao;
-import online.templab.flippedclass.domain.KlassTeam;
-import online.templab.flippedclass.domain.Team;
-import online.templab.flippedclass.domain.TeamRule;
-import online.templab.flippedclass.domain.TeamStudent;
+import online.templab.flippedclass.dao.*;
+import online.templab.flippedclass.domain.*;
 import online.templab.flippedclass.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,6 +26,12 @@ public class TeamServiceImpl implements TeamService {
 
     @Autowired
     TeamRuleDao teamRuleDao;
+
+    @Autowired
+    KlassDao klassDao;
+
+    @Autowired
+    KlassStudentDao klassStudentDao;
 
     /**
      * 插入一个队伍
@@ -126,5 +127,44 @@ public class TeamServiceImpl implements TeamService {
         return false;
     }
 
+    /**
+     * 获取所有未组队学生
+     */
+    @Override
+    public List<Student> listUnTeamStudent(Integer courseId){
+        // 获取课程下所有班级
+        List<Klass> listKlass = klassDao.listKlassByCourseId(courseId);
+
+        // 获取课程下所有学生
+        List<Student> studentListAll = new ArrayList<>();
+        // 所有组队学生id
+        List<Integer> teamedStudent = new ArrayList<>();
+        // 获取所有队伍
+        List<KlassTeam> klassTeams = new ArrayList<>();
+
+        for(Klass klass : listKlass){
+            List<Student> listStudent = klassStudentDao.listByKlassId(klass.getId());
+            studentListAll.addAll(listStudent);// 获取课程下所有学生
+
+            List<KlassTeam> klassTeam = klassTeamDao.listAll();
+            klassTeams.addAll(klassTeam);// 获取班级下所有队伍
+        }
+
+        for(KlassTeam temp:klassTeams){
+            List<Integer> studentIdList = teamStudentDao.listByTeamId(temp.getTeamId());
+            teamedStudent.addAll(studentIdList);
+        }
+
+        for(int i =0;i<studentListAll.size();i++){
+            for(int j=0;j<teamedStudent.size();j++){
+                if(studentListAll.get(i).getId().equals(teamedStudent.get(j))){
+                    studentListAll.remove(i);
+                    break;
+                }
+            }
+        }
+        
+        return studentListAll;
+    }
 
 }

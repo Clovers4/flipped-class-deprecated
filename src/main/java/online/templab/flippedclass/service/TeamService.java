@@ -1,5 +1,6 @@
 package online.templab.flippedclass.service;
 
+import online.templab.flippedclass.domain.Student;
 import online.templab.flippedclass.domain.Team;
 import org.springframework.stereotype.Service;
 
@@ -47,4 +48,10 @@ public interface TeamService {
      * 强制踢人
      */
     boolean deleteStudent(Integer teamId, Integer studentId, Integer courseId);
+
+    /**
+     * 获取所有未组队学生
+     */
+    List<Student> listUnTeamStudent(Integer courseId);
+
 }

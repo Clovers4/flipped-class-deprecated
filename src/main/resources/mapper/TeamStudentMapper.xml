@@ -70,4 +70,10 @@
         where team_id = #{teamStudent.teamId}
           and student_id = #{teamStudent.studentId}
     </delete>
+
+    <select id="listByTeamId" parameterType="Integer" resultMap="Integer">
+        select student_id
+        from team_student
+        where team_id = #{teamId}
+    </select>
 </mapper>
