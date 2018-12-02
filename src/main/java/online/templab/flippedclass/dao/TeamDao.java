@@ -1,6 +1,7 @@
 package online.templab.flippedclass.dao;
 
 import java.util.List;
+
 import online.templab.flippedclass.domain.Team;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
@@ -40,5 +41,5 @@ public interface TeamDao {
     /**
      * 查找一门课程下所有队伍
      */
-    List<Team> listTeamByCourseId(Integer id);
+    List<Team> listByCourseId(Integer id);
 }
