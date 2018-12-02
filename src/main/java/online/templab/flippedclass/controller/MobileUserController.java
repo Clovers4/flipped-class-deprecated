@@ -40,16 +40,19 @@ public class MobileUserController {
         Teacher teacher = teacherService.login(account, password);
         Student student = studentService.login(account, password);
         if (teacher != null) {
-            resultMap.put("User", "teacher");//获得使用的身份
+            //获得使用的身份
+            resultMap.put("User", "teacher");
             resultMap.put("State", "true");
             session.setAttribute("teacher", teacher);
         } else if (student != null) {
-            resultMap.put("User", "Student");//获得使用的身份
+            //获得使用的身份
+            resultMap.put("User", "student");
             resultMap.put("State", "true");
             session.setAttribute("student", student);
         } else {
             resultMap.put("State", "false");
-            resultMap.put("Message", "密码错误");//返回错误信息
+            //返回错误信息
+            resultMap.put("Message", "密码错误");
         }
         return resultMap;
     }

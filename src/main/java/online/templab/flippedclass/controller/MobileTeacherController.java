@@ -12,12 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MobileTeacherController {
 
 
-
-
-
     @RequestMapping(value="/person",method=GET)
     public String teacherPerson(Model model) {
-
         model.addAttribute("teacherId","35012378422");
         return "mobile/teacher/person";
     }

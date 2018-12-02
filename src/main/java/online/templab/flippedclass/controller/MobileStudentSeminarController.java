@@ -34,6 +34,7 @@ public class MobileStudentSeminarController {
     public String chooseCourse(Model model, HttpSession session) {
         Student student = (Student) session.getAttribute("student");
         List<Course> courses = courseService.listCourseByStudentId(student.getId());
+        model.addAttribute("courses", courses);
         return "mobile/student/seminar/chooseCourse";
     }
 
