@@ -1,22 +1,24 @@
 package online.templab.flippedclass.controller;
 
+import static org.springframework.web.bind.annotation.RequestMethod.*;
+
+import online.templab.flippedclass.domain.Course;
+//import com.j2ee.demo.service.CourseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-/**
- * 学生 页面跳转逻辑 Controller 类
- *
- * @author W.K
- */
 @Controller
-@RequestMapping("/mobile/student")
+@RequestMapping("/student")
 public class MobileStudentController {
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String index(Model model) {
-        return "mobile/student/index";
+    @RequestMapping(value="/person",method=GET)
+    public String studentPerson(Model model) {
+        model.addAttribute("studentId","24320162202800");
+        return "mobile/student/person";
     }
 
 }

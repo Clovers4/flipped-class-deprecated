@@ -16,7 +16,7 @@
         若刷新仍未解决问题，可联系管理员：XX@templab.online
 
         <!--TODO:修正为index-->
-        <a href="/hello">点击跳回主页</a>
+        <a href="/logIn">点击跳回主页</a>
     </p>
 </div>
 </body>
