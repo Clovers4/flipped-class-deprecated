@@ -5,12 +5,11 @@ CREATE TABLE `admin` (
 PRIMARY KEY (`id`) ,
 UNIQUE INDEX `unique_account` (`account` ASC) USING BTREE COMMENT 'account唯一标识' 
 );
-CREATE TABLE `user` (
+CREATE TABLE `student` (
 `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 `account` varchar(25) NOT NULL,
 `password` varchar(50) NOT NULL,
 `name` varchar(10) NOT NULL,
-`role` int(5) NOT NULL,
 `email` varchar(50) NULL,
 `activative` tinyint(1) NOT NULL,
 PRIMARY KEY (`id`) ,
@@ -67,7 +66,8 @@ PRIMARY KEY (`id`)
 CREATE TABLE `klass` (
 `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 `course_id` int(10) NOT NULL,
-`name` varchar(50) NOT NULL,
+`time` varchar(50) NOT NULL,
+`location` varchar(50) NULL,
 PRIMARY KEY (`id`) 
 );
 CREATE TABLE `klass_student` (
@@ -124,8 +124,6 @@ CREATE TABLE `klass_team` (
 `team_id` int(11) NOT NULL,
 PRIMARY KEY (`id`) 
 );
-CREATE TABLE `course_share` (
-);
 CREATE TABLE `report` (
 `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 `presentation_id` int(11) NOT NULL,
@@ -140,4 +138,18 @@ CREATE TABLE `material` (
 `filename` varchar(50) NULL,
 `url` varchar(255) NULL,
 PRIMARY KEY (`id`) 
+);
+CREATE TABLE `teacher` (
+`id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+`account` varchar(25) NOT NULL,
+`password` varchar(50) NOT NULL,
+`name` varchar(10) NOT NULL,
+`email` varchar(50) NULL,
+`activative` tinyint(1) NOT NULL,
+PRIMARY KEY (`id`) ,
+UNIQUE INDEX `unique_account` (`account` ASC) USING BTREE COMMENT 'account唯一标识' 
+);
+CREATE TABLE `table_1` (
+);
+CREATE TABLE `table_2` (
 );

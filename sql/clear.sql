@@ -1,5 +1,5 @@
 DROP TABLE `admin`;
-DROP TABLE `user`;
+DROP TABLE `student`;
 DROP TABLE `course`;
 DROP TABLE `seminar`;
 DROP TABLE `course_seminar`;
@@ -15,4 +15,7 @@ DROP TABLE `team_student`;
 DROP TABLE `question`;
 DROP TABLE `klass_team`;
 DROP TABLE `question`;
+DROP TABLE `material`;
+DROP TABLE `report`;
+DROP TABLE `teacher`;
 
