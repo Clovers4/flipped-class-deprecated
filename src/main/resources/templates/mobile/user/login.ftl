@@ -45,7 +45,7 @@
                 alert("请正确输入！");
             }
             else{
-                $.post("/logIn",{ account: account, password:pwd },function(data){
+                $.post("/login",{ account: account, password:pwd },function(data){
                     if(data.State=="true"){
                         alert("登陆成功！")
                         $(location).attr('href', '/'+data.User+'/person');

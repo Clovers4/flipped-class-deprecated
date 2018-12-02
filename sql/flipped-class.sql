@@ -66,6 +66,7 @@ PRIMARY KEY (`id`)
 CREATE TABLE `klass` (
 `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 `course_id` int(10) NOT NULL,
+`name` varchar(30) NULL,
 `time` varchar(50) NOT NULL,
 `location` varchar(50) NULL,
 PRIMARY KEY (`id`) 
