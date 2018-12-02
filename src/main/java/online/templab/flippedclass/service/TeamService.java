@@ -16,12 +16,12 @@ public interface TeamService {
     /**
      * 插入一个队伍
      */
-     int insert(Team record,Integer klassId);
+    int insert(Team record, Integer klassId);
 
     /**
      * 删除一个队伍
      */
-    int deleteById(Integer id,Integer klassId);
+    int deleteById(Integer id, Integer klassId);
 
     /**
      * 更新队伍信息
@@ -31,10 +31,20 @@ public interface TeamService {
     /**
      * 获取一门课程下所有队伍
      */
-    List<Team> listTeamByCourseId(Integer courseId);
+    List<Team> listByCourseId(Integer courseId);
 
     /**
      * 判定队伍是否合法
      */
-    boolean validTeam(Integer id);
+    boolean valid(Integer id);
+
+    /**
+     * 强制拉人
+     */
+    boolean addStudent(Integer teamId, Integer studentId, Integer courseId);
+
+    /**
+     * 强制踢人
+     */
+    boolean deleteStudent(Integer teamId, Integer studentId, Integer courseId);
 }
