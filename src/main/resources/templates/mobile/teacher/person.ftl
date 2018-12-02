@@ -7,8 +7,7 @@
 <div class="content"
      style="background-color:white;margin-top:10px;height:120px;margin-left: 5px;width:95%">
         <span class="content text text-small popup-content" style="margin-top:80px;">
-        账号：${teacher.account!}
-        ,姓名：${teacher.name!}
+        ${teacher.account!}
         </span>
 </div>
 

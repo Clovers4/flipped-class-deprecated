@@ -93,7 +93,7 @@
         select
             course.id as id,
             teacher_id,
-            `name`,
+            course.`name` as `name`,
             intro,
             share_team_master_course_id,
             share_seminar_master_course_id,
@@ -101,7 +101,7 @@
             report_weight,
             quetion_weight
         from course, klass, klass_student
-        where teacher_id = #{teacher_id} and
+        where student_id = #{studentId} and
               course.id = course_id and
               klass.id = klass_id
     </select>
