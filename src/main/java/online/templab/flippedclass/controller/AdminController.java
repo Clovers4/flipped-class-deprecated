@@ -1,4 +1,4 @@
-package online.templab.flippedclass.controller;
+﻿package online.templab.flippedclass.controller;
 
 
 import online.templab.flippedclass.domain.Admin;
@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+
+//cr
 
 /**
  * 管理员 页面跳转逻辑 Controller 类
